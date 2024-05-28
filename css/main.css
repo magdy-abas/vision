@@ -1,0 +1,51 @@
+/* ----------------------------------------------------------------
+
+TABLE OF CONTENTS
+
+	01 Global
+	02 Navbar
+	03 Header
+	04 About
+	05 Services
+	06 Portfolio
+	07 Clients
+	08 Counter
+	09 Blog
+	10 Contact
+	11 Responsive
+		
+---------------------------------------------------------------- */
+
+/* -------------------------------------------------------
+                     Global 
+-------------------------------------------------------- */
+:root {
+  --main-color: #172f3b;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+
+  height: 50000px;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Montserrat", sans-serif;
+}
+
+.navbar a {
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+}
+
+/* -------------------------------------------------------
+                     Navbar 
+-------------------------------------------------------- */
