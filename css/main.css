@@ -26,6 +26,7 @@ TABLE OF CONTENTS
   --text-dark-color: #222222;
   --text-white-color: #eee;
   --yellow-color: #ffa500;
+  --gray-color: #808080;
 }
 
 body {
@@ -50,16 +51,19 @@ h4 {
 }
 
 .hero-section {
-  min-height: 50vh;
-  background-size: cover !important;
+  background-blend-mode: overlay;
+  background-position: center;
+  background-size: cover;
+  min-height: 45vh;
 }
 
 .hero-section h2 {
   color: var(--text-white-color);
-  font-size: 11vmin;
+  font-size: 9vmin;
   letter-spacing: 0.03em;
   line-height: 1;
   text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
+  text-wrap: nowrap;
 }
 
 .hero-section p {
@@ -154,13 +158,8 @@ h4 {
                      hero-section 
 -------------------------------------------------------- */
 .hero-section.events {
-  background: radial-gradient(
-      ellipse at center,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0) 15%,
-      rgba(0, 0, 0, 0.65) 100%
-    ),
-    url(../imgs/bg-events.png) no-repeat center center fixed;
+  background-image: url("../imgs/bg-events.png"),
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
 
 /* -------------------------------------------------------
@@ -195,20 +194,15 @@ footer img {
                      hero-section contact us
 -------------------------------------------------------- */
 .hero-section.contact-us {
-  background: radial-gradient(
-      rgba(0, 0, 0, 0.6) 5%,
-      rgba(0, 0, 0, 0.6) 5%,
-      rgba(0, 0, 0, 1) 100%
-    ),
-    url(../imgs/contactUs-bg.png) no-repeat center center fixed;
-  background-size: cover !important;
+  background-image: url("../imgs/contactUs-bg.png"),
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
 
 .contact-us .map-icons i {
-  font-size: 22px;
+  font-size: 20px;
   color: var(--text-dark-color);
   background-color: #e8e8e8;
-  padding: 12px;
+  padding: 10px;
   margin-left: 10px;
   transition: all 0.4s ease;
 }
@@ -220,4 +214,29 @@ footer img {
 
 .contact-us .address-detailes span {
   color: var(--text-dark-color);
+}
+
+.address-detailes i {
+  color: var(--main-color);
+}
+.contact-us .map {
+  position: relative;
+}
+.contact-us .map::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  height: 100%;
+  border-left: 2px dotted #e8e8e8;
+}
+
+.contact-us .form label {
+  color: var(--gray-color);
+}
+
+.contact-us .form .form-control:focus {
+  background-color: #fff;
+  border-color: var(--yellow-color);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(255, 165, 0, 0.5);
 }
