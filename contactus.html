@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Daniels is a responsive creative template">
+    <meta name="description" content="Vision">
     <!-- title -->
     <title>Vision</title>
     <!-- favicon -->
@@ -13,10 +13,19 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
+    <!-- Font Awesome Library Icons -->
+    <link rel="stylesheet" href="./css/all.min.css">
     <!-- animation css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- wow js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
+        integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- bootstrap css -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- owl carousel library  -->
+    <link rel="stylesheet" href="./css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
     <!-- main Style Css -->
     <link rel="stylesheet" href="./css/main.css">
 </head>
@@ -96,10 +105,6 @@
 
                                     </ul>
                                 </li>
-
-
-
-
                             </ul>
                         </li>
 
@@ -123,74 +128,126 @@
     <!-- navbar  -->
 
     <!-- hero-section -->
-    <section class="hero-section events overflow-hidden">
-        <div class="container">
-            <div class="d-flex justify-content-center align-items-center flex-column  text-center  mt-5">
-                <h2 class="mb-5">
-                    EVENTS
+    <section class="hero-section contact-us overflow-hidden position-relative">
+        <div class="container ">
+            <div class="text-center ">
+                <h2 class=" position-absolute start-50 top-50 translate-middle">
+                    CONTACT US
                 </h2>
-                <p class="w-75">Discover our exciting lineup of events that bring people together. From community
-                    gatherings to
-                    exclusive workshops, there's something for everyone. Join us and make lasting memories!</p>
             </div>
         </div>
     </section>
     <!-- hero-section -->
-    <!-- events  -->
-    <section class="events py-5">
-        <div class="container">
-            <div class="row d-flex justify-content-center flex-wrap">
-                <div class="main-title text-center mb-5">
-                    <h3 class="position-relative d-inline-block">AVAILABLE EVENTS</h3>
-                    <div class="line  bg-yellow-color   pt-1 mb-4 mx-auto"></div>
-                </div>
-                <div class=" mb-5 col-10  col-md-4 ">
-                    <div class="card border-0  border-bottom">
-                        <img src="./imgs/event-img.png" class="card-img-top" alt="event-img">
-                        <div class="card-body pb-3">
-                            <p class="card-title fw-bold">ICES(Intellegent Cities Exhibition & Conference)</p>
-                            <span class="text-black-50 fw-semibold">Cairo</span> <br>
-                            <span class="text-black-50 fw-semibold">May 2024</span>
+    <!-- contact  -->
+    <section class="contact-us">
+        <div class="container py-5">
+            <div class="main-title text-center mb-5">
+                <h3 class="position-relative d-inline-block">Send us a message ! </h3>
+                <div class="line  bg-yellow-color   pt-1 mb-4 mx-auto"></div>
+            </div>
+            <div class="row">
+                <!-- form  -->
+                <div class="col-md-6 order-last   order-md-first ">
+                    <div class="d-md-flex">
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating me-md-3 mb-3">
+                                <input type="text" class="form-control" id="nameInput" placeholder="Name*">
+                                <label for="nameInput">Name*</label>
+                            </div>
                         </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating mb-3 ">
+                                <input type="email" class="form-control" id="emailInput" placeholder="E-Mail">
+                                <label for="emailInput">E-Mail*</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="d-md-flex">
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating me-md-3 mb-3">
+                                <input type="text" class="form-control" id="companyInput" placeholder="Company">
+                                <label for="companyInput">Company</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="webInput" placeholder="Website">
+                                <label for="webInput">Website</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="d-md-flex">
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating me-md-3 mb-3">
+                                <input type="text" class="form-control" id="countryInput" placeholder="Country">
+                                <label for="countryInput">Country</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" id="phoneInput" placeholder="E-Phone">
+                                <label for="phoneInput">Phone</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                                style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Massage</label>
+                        </div>
+
+                        <a class="btn btn-dark-blue btn-dark k w-100 mt-4" href="#">Submit</a>
                     </div>
                 </div>
-                <div class=" mb-5 col-10 col-md-4">
-                    <div class="card border-0  border-bottom">
-                        <img src="./imgs/event-img.png" class="card-img-top" alt="event-img">
-                        <div class="card-body pb-3">
-                            <p class="card-title fw-bold">ICES(Intellegent Cities Exhibition & Conference)</p>
-                            <span class="text-black-50 fw-semibold">Cairo</span> <br>
-                            <span class="text-black-50 fw-semibold">May 2024</span>
-                        </div>
+                <!-- map sec  -->
+                <div class="col-md-6 py-5 py-md-0  order-first order-md-last ">
+                    <div class="col-12">
+                        <div style="width: 100%"><iframe width="100%" height="300" frameborder="0" scrolling="no"
+                                marginheight="0" marginwidth="0"
+                                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=samanoud+(vision)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
+                                    href="https://www.gps.ie/">gps trackers</a></iframe></div>
                     </div>
-                </div>
-                <div class=" mb-5 col-10 col-md-4">
-                    <div class="card border-0  border-bottom">
-                        <img src="./imgs/event-img.png" class="card-img-top" alt="event-img">
-                        <div class="card-body pb-3">
-                            <p class="card-title fw-bold">ICES(Intellegent Cities Exhibition & Conference)</p>
-                            <span class="text-black-50 fw-semibold">Cairo</span> <br>
-                            <span class="text-black-50 fw-semibold">May 2024</span>
-                        </div>
+                    <div class="map-icons mt-2  d-flex mb-4 justify-content-md-end">
+                        <a href="#"> <i class="rounded-circle fa-brands fa-whatsapp"></i></a>
+                        <a href="#"> <i class="rounded-circle fa-brands fa-facebook"></i></a>
+                        <a href="#"> <i class="rounded-circle fa-brands fa-instagram"></i></a>
+                        <a href="#"> <i class="rounded-circle fa-brands fa-x-twitter"></i></a>
+                    </div>
+                    <div class=" ms-3 address-detailes d-flex flex-column">
+                        <span class="mb-2 fs-6 fw-semibold  "><i class="fa-solid fa-phone me-2"></i>01024980379</span>
+                        <span class="mb-2 fs-6 fw-semibold  "><i
+                                class="fa-solid fa-envelope me-2"></i>vision@gmail.com</span>
+                        <span class="mb-2 fs-6 fw-semibold  "><i class="fa-solid fa-location-dot me-2"></i>Samannoud,
+                            Gharbia, Egypt.
+                            El-Nahas Square, Zayed Tower, 7th Floor, No. 701. </span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- events  -->
+
+    <!-- contact  -->
     <footer>
         <div class="text-center py-3">
             <p class="m-0 text-white fs-6">All Rights Reserved © Vision Company <span><img
                         src="./imgs/vision-nav-logo.png" alt="logo"></span></p>
-
         </div>
-
-
-
-
     </footer>
+
+
+
+
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- owl carousel library  -->
+    <script src="./js/owl.carousel.min.js"></script>
     <!-- bootstrap bundle -->
     <script src="./js/bootstrap.bundle.min.js"></script>
     <!-- main js file -->
