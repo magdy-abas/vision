@@ -145,6 +145,10 @@ h4 {
   margin: 0 20px;
 }
 
+.navbar .nav-link.active {
+  color: var(--yellow-color);
+}
+
 /* -------------------------------------------------------
                    Events
 -------------------------------------------------------- */
@@ -335,4 +339,70 @@ body.modal-open {
   color: #bbb;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* -------------------------------------------------------
+                        home
+-------------------------------------------------------- */
+.carousel-container {
+  padding: 0; /* Remove padding */
+  overflow: hidden; /* Ensure no overflow from the container */
+}
+
+/* Ensure the carousel takes up full width and height */
+.carousel-container .owl-carousel .owl-item {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-container .owl-carousel .owl-item img {
+  width: 100%;
+  height: 50vh; /* Set a fixed height */
+  object-fit: cover; /* Cover the entire container */
+  display: block; /* Ensure images are block elements */
+}
+
+/* Ensure the carousel itself takes up full width */
+.carousel-container .owl-carousel {
+  width: 100%;
+  overflow: hidden; /* Ensure no overflow from the carousel */
+}
+
+.carousel-container .owl-dots {
+  position: absolute;
+  bottom: 20px; /* Adjust vertical position as needed */
+  width: 100%;
+  text-align: center;
+}
+
+.carousel-container .owl-dot {
+  display: inline-block;
+  margin: 0 5px; /* Adjust spacing between dots */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #bbb; /* Default dot color */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-container .owl-theme .owl-dots .owl-dot span {
+  background: #d6d6d6;
+}
+
+.carousel-container .owl-carousel .owl-dots .owl-dot.active span {
+  background-color: var(--yellow-color);
+}
+
+/* company-info  */
+
+.company-info .content {
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  left: 0;
+  top: 0;
+  background-color: var(--yellow-color);
+  clip-path: circle(60% at left -50%);
+  z-index: -1;
 }

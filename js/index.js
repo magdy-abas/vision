@@ -1,14 +1,51 @@
-// $(document).ready(function () {
-//   $(".owl-carousel").owlCarousel({
-//     items: 1,
-//     loop: true,
-//     autoplay: true,
-//     autoplayTimeout: 4000,
-//     animateOut: "animate__fadeOut",
-//     animateIn: "animate__fadeOIn",
-//   });
-// });
+$(document).ready(function () {
+  $(".carousel-1").owlCarousel({
+    items: 1,
+    loop: true,
+    nav: false, // Hide navigation indicators
+    dots: true, // Show custom dots
+    autoplay: true,
+    autoplayTimeout: 3000, // 3 seconds
+    autoplayHoverPause: true, // Pause autoplay when hovering over the slider
+    animateOut: "fadeOut", // Fade out animation
+    animateIn: "fadeIn", // Fade in animation
+    smartSpeed: 1000, // Smooth transition speed
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 1,
+        nav: false,
+      },
+      600: {
+        items: 1,
+        nav: false,
+      },
+      1000: {
+        items: 1,
+        nav: false,
+      },
+    },
+  });
+});
 
+$(document).ready(function () {
+  $(".slider-1").owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 2,
+      },
+      1000: {
+        items: 3,
+      },
+    },
+  });
+});
 //drop-down  add atr to open in hover only in lg screens
 function toggleDropdownAttribute() {
   var dropdownButton = document.getElementById("dropdown");
@@ -129,10 +166,12 @@ for (var i = 0; i < images.length; i++) {
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-  document.body.classList.remove("modal-open"); // Enable body scroll
-};
+if (span) {
+  span.addEventListener("click", function () {
+    modal.style.display = "none";
+    document.body.classList.remove("modal-open"); // Enable body scroll
+  });
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
