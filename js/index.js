@@ -32,20 +32,44 @@ $(document).ready(function () {
   $(".slider-1").owlCarousel({
     loop: true,
     margin: 10,
-    nav: true,
+    nav: false,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    smartSpeed: 1000,
     responsive: {
       0: {
-        items: 1,
+        items: 2,
       },
       600: {
         items: 2,
       },
       1000: {
-        items: 3,
+        items: 4,
       },
     },
   });
 });
+
+$(document).ready(function () {
+  $(".user-carousel").owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: false,
+    dots: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 1,
+      },
+      1000: {
+        items: 1,
+      },
+    },
+  });
+});
+
 //drop-down  add atr to open in hover only in lg screens
 function toggleDropdownAttribute() {
   var dropdownButton = document.getElementById("dropdown");
