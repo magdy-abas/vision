@@ -51,3 +51,19 @@
     font-size: 1.1rem !important;
   }
 }
+
+/* products  */
+
+@media only screen and (max-width: 768px) {
+  .cards .card::before {
+    width: 150%;
+    height: 170%;
+    top: -90%;
+    left: -90%;
+  }
+  .cards .card:hover::before {
+    transform: rotate(90deg);
+    top: -115%;
+    left: -23%;
+  }
+}

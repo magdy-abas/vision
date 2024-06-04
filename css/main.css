@@ -154,6 +154,234 @@ h4 {
 }
 
 /* -------------------------------------------------------
+                        home
+-------------------------------------------------------- */
+.carousel-container {
+  padding: 0; /* Remove padding */
+  overflow: hidden; /* Ensure no overflow from the container */
+}
+
+/* Ensure the carousel takes up full width and height */
+.carousel-container .owl-carousel .owl-item {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-container .owl-carousel .owl-item img {
+  width: 100%;
+  height: 50vh; /* Set a fixed height */
+  object-fit: cover; /* Cover the entire container */
+  display: block; /* Ensure images are block elements */
+}
+
+/* Ensure the carousel itself takes up full width */
+.carousel-container .owl-carousel {
+  width: 100%;
+  overflow: hidden; /* Ensure no overflow from the carousel */
+}
+
+.carousel-container .owl-dots {
+  position: absolute;
+  bottom: 20px; /* Adjust vertical position as needed */
+  width: 100%;
+  text-align: center;
+}
+
+.carousel-container .owl-dot {
+  display: inline-block;
+  margin: 0 5px; /* Adjust spacing between dots */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #bbb; /* Default dot color */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-container .owl-theme .owl-dots .owl-dot span {
+  background: #d6d6d6;
+}
+
+.carousel-container .owl-carousel .owl-dots .owl-dot.active span {
+  background-color: var(--yellow-color);
+}
+
+/* company-info  */
+
+.company-info .content-circle {
+  position: absolute;
+  width: 110%;
+  height: 120%;
+  left: 0;
+  top: 0;
+  background: rgba(198, 151, 45, 0.6);
+  clip-path: circle(52.8% at 0 49%);
+  z-index: -1;
+}
+
+.img-layer {
+  position: relative;
+}
+
+.main-img {
+  width: 50%;
+}
+
+.overlay-img {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 50%;
+  height: auto;
+  border: 2px solid white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .overlay-img {
+    top: 10%;
+    left: 10%;
+    width: 70%; /* Adjust for smaller screens */
+  }
+}
+
+/* slider  */
+
+.owl-carousel .item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensures the image covers the area */
+}
+
+.slider-container .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px; /* Adjust the height as needed */
+}
+.slider-container .item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* product  */
+.products-home .product-info .product-content .img-layer {
+  background-color: rgb(33, 33, 33, 0.6);
+  top: 100%;
+  transition: top 0.5s ease;
+}
+.products-home .product-info .product-content p {
+  color: #ffff;
+}
+
+.products-home .product-info .product-content .btn-blue {
+  background-color: #168ccb;
+  color: #ffff;
+  transition: all 0.3s ease-in-out;
+}
+.products-home .product-info .product-content .btn-blue:hover {
+  background-color: #1a506d;
+  color: #ffff;
+}
+
+.products-home .product-info:hover .img-layer {
+  top: 0;
+  left: 0;
+}
+
+/* brands  */
+
+.brands .brand-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensures the image covers the area */
+}
+
+.brands .brand-img {
+  display: flex;
+  height: 150px; /* Adjust the height as needed */
+}
+.brands .brand-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.5s ease-in-out;
+}
+
+.brands .brand-img img:hover {
+  filter: grayscale(0%);
+}
+
+/* testimonial  */
+
+.testimonial {
+  overflow: hidden !important;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1) 48%,
+    rgba(63, 128, 161, 1) 48%,
+    rgba(23, 47, 59, 1) 95%
+  );
+}
+
+.testimonial-item {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 20px;
+  margin: 20px;
+  background-color: #f8f9fa;
+  border-radius: 20px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.testimonial img {
+  max-width: 150px;
+  border-radius: 5px;
+}
+.testimonial .content {
+  max-width: 700px;
+  margin-left: 40px;
+}
+.testimonial .quote {
+  font-size: 1.2em;
+  color: #555;
+}
+.testimonial .name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.testimonial .title {
+  color: #777;
+  margin-bottom: 10px;
+}
+.testimonial .hashtag {
+  font-weight: bold;
+  color: #333;
+}
+
+.testimonial .img-layer {
+  position: relative;
+  z-index: 1111;
+}
+
+.testimonial .img-layer .img-frame {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  border: 5px solid #264e62;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-radius: 5px;
+}
+
+/* -------------------------------------------------------
                    Events
 -------------------------------------------------------- */
 .hero-section.events {
@@ -346,230 +574,41 @@ body.modal-open {
 }
 
 /* -------------------------------------------------------
-                        home
+               product
 -------------------------------------------------------- */
-.carousel-container {
-  padding: 0; /* Remove padding */
-  overflow: hidden; /* Ensure no overflow from the container */
+
+.hero-section.products {
+  background-image: url("../imgs/bg-events.png"),
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
-
-/* Ensure the carousel takes up full width and height */
-.carousel-container .owl-carousel .owl-item {
-  position: relative;
-  width: 100%;
-}
-
-.carousel-container .owl-carousel .owl-item img {
-  width: 100%;
-  height: 50vh; /* Set a fixed height */
-  object-fit: cover; /* Cover the entire container */
-  display: block; /* Ensure images are block elements */
-}
-
-/* Ensure the carousel itself takes up full width */
-.carousel-container .owl-carousel {
-  width: 100%;
-  overflow: hidden; /* Ensure no overflow from the carousel */
-}
-
-.carousel-container .owl-dots {
-  position: absolute;
-  bottom: 20px; /* Adjust vertical position as needed */
-  width: 100%;
-  text-align: center;
-}
-
-.carousel-container .owl-dot {
-  display: inline-block;
-  margin: 0 5px; /* Adjust spacing between dots */
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #bbb; /* Default dot color */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.carousel-container .owl-theme .owl-dots .owl-dot span {
-  background: #d6d6d6;
-}
-
-.carousel-container .owl-carousel .owl-dots .owl-dot.active span {
-  background-color: var(--yellow-color);
-}
-
-/* company-info  */
-
-.company-info .content-circle {
-  position: absolute;
-  width: 100%;
-  height: 120%;
-  left: 0;
-  top: 0;
-  background-color: rgba(198, 151, 45, 0.6);
-
-  clip-path: circle(50% at left 50%);
-  z-index: -1;
-}
-
-.img-layer {
-  position: relative;
-}
-
-.main-img {
-  width: 50%;
-}
-
-.overlay-img {
-  position: absolute;
-  top: 20%;
-  left: 20%;
-  width: 50%;
-  height: auto;
-  border: 2px solid white;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 768px) {
-  .overlay-img {
-    top: 10%;
-    left: 10%;
-    width: 70%; /* Adjust for smaller screens */
-  }
-}
-
-/* slider  */
-
-.owl-carousel .item img {
-  width: 100%;
-  height: auto;
-  object-fit: cover; /* Ensures the image covers the area */
-}
-
-.slider-container .item {
+.cards .card {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 150px; /* Adjust the height as needed */
-}
-.slider-container .item img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
-/* product  */
-.products-home .product-info .product-content .img-layer {
-  background-color: rgb(33, 33, 33, 0.6);
-  top: 100%;
-  transition: top 0.5s ease;
-}
-.products-home .product-info .product-content p {
-  color: #ffff;
-}
-
-.products-home .product-info .product-content .btn-blue {
-  background-color: #168ccb;
-  color: #ffff;
-  transition: all 0.3s ease-in-out;
-}
-.products-home .product-info .product-content .btn-blue:hover {
-  background-color: #1a506d;
-  color: #ffff;
-}
-
-.products-home .product-info:hover .img-layer {
-  top: 0;
-  left: 0;
-}
-
-/* brands  */
-
-.brands .brand-img img {
-  width: 100%;
-  height: auto;
-  object-fit: cover; /* Ensures the image covers the area */
-}
-
-.brands .brand-img {
-  display: flex;
-  height: 150px; /* Adjust the height as needed */
-}
-.brands .brand-img img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  filter: grayscale(100%);
-  transition: filter 0.5s ease-in-out;
-}
-
-.brands .brand-img img:hover {
-  filter: grayscale(0%);
-}
-
-/* testimonial  */
-
-.testimonial {
-  overflow: hidden !important;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 1) 48%,
-    rgba(63, 128, 161, 1) 48%,
-    rgba(23, 47, 59, 1) 95%
-  );
-}
-
-.testimonial-item {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  position: relative;
   padding: 20px;
-  margin: 20px;
-  background-color: #f8f9fa;
-  border-radius: 20px;
-  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-.testimonial img {
-  max-width: 150px;
-  border-radius: 5px;
-}
-.testimonial .content {
-  max-width: 700px;
-  margin-left: 40px;
-}
-.testimonial .quote {
-  font-size: 1.2em;
-  color: #555;
-}
-.testimonial .name {
-  font-size: 1.5em;
-  font-weight: bold;
-}
-.testimonial .title {
-  color: #777;
-  margin-bottom: 10px;
-}
-.testimonial .hashtag {
-  font-weight: bold;
-  color: #333;
-}
-
-.testimonial .img-layer {
   position: relative;
-  z-index: 1111;
+  overflow: hidden;
+  z-index: 1;
 }
 
-.testimonial .img-layer .img-frame {
+.cards .card::before {
+  content: "";
+  background-color: #172f3b;
+  width: 150%;
+  height: 180%;
   position: absolute;
-  top: 10%;
-  left: 10%;
-  border: 5px solid #264e62;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  width: 100%;
-  height: 100%;
+  top: -74%;
+  left: -78%;
   z-index: -1;
-  border-radius: 5px;
+  transform: rotate(39deg);
+  transition: all 0.5s ease;
+}
+
+.cards .card:hover::before {
+  transform: rotate(90deg);
+}
+.cards .card img {
+  height: 300px;
+  object-fit: cover;
 }

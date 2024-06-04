@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="./css/animate.css" />
     <!-- bootstrap css -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- owl carousel library  -->
+    <link rel="stylesheet" href="./css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
     <!-- main Style Css -->
     <link rel="stylesheet" href="./css/main.css">
 </head>
@@ -51,7 +54,7 @@
                             <a class="nav-link" href="events.html">Events</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a id="dropdown" class="nav-link dropdown-toggle" href="products.html" role="button"
+                            <a id="dropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-auto-close="outside" aria-expanded="false" data-bs-toggle="dropdown">
                                 Product
                             </a>
@@ -106,10 +109,10 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="contactus.html">Contact us</a>
+                            <a class="nav-link" href="contactus.html">Contact us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="aboutus.html">About us</a>
+                            <a class="nav-link active" aria-current="page" href="aboutus.html">About us</a>
                         </li>
 
                         <li class="nav-item">
@@ -126,112 +129,53 @@
 
     <!-- hero-section -->
     <section
-        class="hero-section contact-us overflow-hidden d-flex justify-content-center align-items-center  text-center">
+        class="hero-section products overflow-hidden d-flex justify-content-center align-items-center  text-center">
         <div class="container">
             <div>
                 <h2>
-                    CONTACT US
+                    products
                 </h2>
             </div>
         </div>
     </section>
     <!-- hero-section -->
-    <!-- contact  -->
-    <section class="contact-us">
-        <div class="container py-5">
-            <div class="main-title text-center mb-5">
-                <h3 class="position-relative d-inline-block">Send us a message ! </h3>
-                <div class="line  bg-yellow-color   pt-1 mb-4 mx-auto"></div>
-            </div>
-            <div class="row  gx-5">
-                <!-- form  -->
-                <div class="form col-md-6 order-last    order-md-first ">
-                    <div class="d-md-flex">
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating me-md-3 mb-3">
-                                <input type="text" class="form-control" id="nameInput" placeholder="Name*">
-                                <label for="nameInput">Name*</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating mb-3 ">
-                                <input type="email" class="form-control" id="emailInput" placeholder="E-Mail">
-                                <label for="emailInput">E-Mail*</label>
-                            </div>
-                        </div>
 
-                    </div>
-
-
-                    <div class="d-md-flex">
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating me-md-3 mb-3">
-                                <input type="text" class="form-control" id="companyInput" placeholder="Company">
-                                <label for="companyInput">Company</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="webInput" placeholder="Website">
-                                <label for="webInput">Website</label>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="d-md-flex">
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating me-md-3 mb-3">
-                                <input type="text" class="form-control" id="countryInput" placeholder="Country">
-                                <label for="countryInput">Country</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating mb-3">
-                                <input type="tel" class="form-control" id="phoneInput" placeholder="E-Phone">
-                                <label for="phoneInput">Phone</label>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="col-12">
-                        <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                                style="height: 100px"></textarea>
-                            <label for="floatingTextarea2">Massage</label>
-                        </div>
-
-                        <a class="btn btn-dark-blue btn-dark k w-100 mt-4" href="#">Submit</a>
+    <!-- cards -->
+    <section class="cards py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="./imgs/image 27.png" class="img-fluid" alt="Product-img">
+                        <p>coating</p>
                     </div>
                 </div>
-                <!-- map sec  -->
-                <div class="map col-md-6  py-5 py-md-0  order-first order-md-last ">
-                    <div class="col-12">
-                        <div style="width: 100%"><iframe width="100%" height="300" frameborder="0" scrolling="no"
-                                marginheight="0" marginwidth="0"
-                                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=samanoud+(vision)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
-                                    href="https://www.gps.ie/">gps trackers</a></iframe></div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="./imgs/image 28.png" class="img-fluid" alt="Product-img">
+                        <p>coating</p>
                     </div>
-                    <div class="map-icons mt-2  d-flex mb-4 justify-content-md-end">
-                        <a href="#"> <i class="rounded-circle fa-brands fa-whatsapp"></i></a>
-                        <a href="#"> <i class="rounded-circle fa-brands fa-facebook"></i></a>
-                        <a href="#"> <i class="rounded-circle fa-brands fa-instagram"></i></a>
-                        <a href="#"> <i class="rounded-circle fa-brands fa-x-twitter"></i></a>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="./imgs/image 29.png" class="img-fluid" alt="Product-img">
+                        <p>coating</p>
                     </div>
-                    <div class=" ms-3 address-detailes d-flex flex-column">
-                        <span class="mb-2 fs-6 fw-semibold  "><i class="fa-solid fa-phone me-2"></i>01024980379</span>
-                        <span class="mb-2 fs-6 fw-semibold  "><i
-                                class="fa-solid fa-envelope me-2"></i>vision@gmail.com</span>
-                        <span class="mb-2 fs-6 fw-semibold  "><i class="fa-solid fa-location-dot me-2"></i>Samanoud,
-                            Gharbia, Egypt.
-                            El-Nahas Square, Zayed Tower, 7th Floor, No. 701. </span>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="./imgs/image 30.png" class="img-fluid" alt="Product-img">
+                        <p>coating</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <!-- cards -->
 
-    <!-- contact  -->
+
+
+
     <footer>
         <div class="text-center py-3">
             <p class="m-0 text-white fs-6">All Rights Reserved © Vision Company <span><img
@@ -240,16 +184,20 @@
     </footer>
 
 
-
-
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- owl carousel library  -->
     <script src="./js/owl.carousel.min.js"></script>
+
     <!-- bootstrap bundle -->
     <script src="./js/bootstrap.bundle.min.js"></script>
     <!-- main js file -->
     <script src="./js/index.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>
+        //wow js library
+        new WOW().init();
+    </script>
 
 </body>
 
