@@ -125,9 +125,218 @@
     </nav>
     <!-- navbar  -->
 
+    <!-- products  -->
+    <section class="products py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="filter-sidebar">
+                        <div class="filter-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="filter-title">Filters</span>
+                                <span class="filter-reset">Reset</span>
+                            </div>
+                        </div>
+                        <!-- Main Categories always shown -->
+                        <div class="filter-card">
+                            <div class="filter-title" data-category="product">Product</div>
+                            <div class="filter-items" style="display: block;">
+                                <div class="filter-item">
+                                    <input type="checkbox" id="glass" class="main-category" data-category="glass">
+                                    <label for="glass">Glass</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="decal" class="main-category" data-category="decal">
+                                    <label for="decal">Decal</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="porcelain" class="main-category"
+                                        data-category="porcelain">
+                                    <label for="porcelain">Porcelain</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="coating" class="main-category" data-category="coating">
+                                    <label for="coating">Coating & decorations colours</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Subcategories -->
+                        <div class="filter-card" data-parent-category="glass">
+                            <div class="filter-title" data-category="glass">Glass</div>
+                            <div class="filter-items">
+                                <div class="filter-item">
+                                    <input type="checkbox" id="glass-plain" data-category="glass-plain">
+                                    <label for="glass-plain">Plain</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="glass-decorated" data-category="glass-decorated">
+                                    <label for="glass-decorated">Decorated</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-card" data-parent-category="decal">
+                            <div class="filter-title" data-category="decal">Decal</div>
+                            <div class="filter-items">
+                                <div class="filter-item">
+                                    <input type="checkbox" id="materials" data-category="materials">
+                                    <label for="materials">Materials</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="pattern" data-category="pattern">
+                                    <label for="pattern">Pattern</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-card" data-parent-category="porcelain">
+                            <div class="filter-title" data-category="porcelain">Porcelain</div>
+                            <div class="filter-items">
+                                <div class="filter-item">
+                                    <input type="checkbox" id="porcelain-plain" data-category="porcelain-plain">
+                                    <label for="porcelain-plain">Plain</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="porcelain-decorated" data-category="porcelain-decorated">
+                                    <label for="porcelain-decorated">Decorated</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-card" data-parent-category="coating">
+                            <div class="filter-title" data-category="coating">Coating & decorations colours</div>
+                            <div class="filter-items">
+                                <div class="filter-item">
+                                    <input type="checkbox" id="glass-ceramic" data-category="glass-ceramic">
+                                    <label for="glass-ceramic">Glass & Ceramic colours</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="organic-colours" data-category="organic-colours">
+                                    <label for="organic-colours">Organic Colours</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="luster" data-category="luster">
+                                    <label for="luster">Luster</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Additional nested subcategories -->
+                        <div class="filter-card" data-parent-category="glass-ceramic">
+                            <div class="filter-title" data-category="glass-ceramic">Glass & Ceramic colours</div>
+                            <div class="filter-items">
+                                <div class="filter-item">
+                                    <input type="checkbox" id="750-850" data-category="750-850">
+                                    <label for="750-850">750°-850°</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="550-600" data-category="550-600">
+                                    <label for="550-600">550°-600°</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-card" data-parent-category="organic-colours">
+                            <div class="filter-title" data-category="organic-colours">Organic Colours</div>
+                            <div class="filter-items">
+                                <div class="filter-item">
+                                    <input type="checkbox" id="solvent-based" data-category="solvent-based">
+                                    <label for="solvent-based">Solvent Based Colors</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="water-based" data-category="water-based">
+                                    <label for="water-based">Water Based Colors</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-card" data-parent-category="materials">
+                            <div class="filter-title" data-category="materials">Materials</div>
+                            <div class="filter-items">
+                                <div class="filter-item">
+                                    <input type="checkbox" id="paper" data-category="paper">
+                                    <label for="paper">Paper</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="screen-printing-oil" data-category="screen-printing-oil">
+                                    <label for="screen-printing-oil">Screen Printing Oil</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="cover-coat" data-category="cover-coat">
+                                    <label for="cover-coat">Cover Coat</label>
+                                </div>
+                                <div class="filter-item">
+                                    <input type="checkbox" id="powder-colour" data-category="powder-colour">
+                                    <label for="powder-colour">Powder Colour</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-card" data-parent-category="pattern">
+                            <div class="filter-title" data-category="pattern">Pattern</div>
+                            <div class="filter-items">
+                                <div class="filter-item">
+                                    <input type="checkbox" id="custom" data-category="custom">
+                                    <label for="custom">Custom</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div id="items">
+                        <!-- Glass Items -->
+                        <div class="item" data-product="glass" data-family="glass-plain">
+                            <h5>Glass Plain Item 1</h5>
+                        </div>
+                        <div class="item" data-product="glass" data-family="glass-plain">
+                            <h5>Glass Plain Item 2</h5>
+                        </div>
+                        <div class="item" data-product="glass" data-family="glass-decorated">
+                            <h5>Glass Decorated Item 1</h5>
+                        </div>
+                        <div class="item" data-product="glass" data-family="glass-decorated">
+                            <h5>Glass Decorated Item 2</h5>
+                        </div>
+                        <!-- Decal Items -->
+                        <div class="item" data-product="decal" data-family="materials">
+                            <h5>Materials Item 1</h5>
+                        </div>
+                        <div class="item" data-product="decal" data-family="materials">
+                            <h5>Materials Item 2</h5>
+                        </div>
+                        <div class="item" data-product="decal" data-family="pattern">
+                            <h5>Pattern Item 1</h5>
+                        </div>
+                        <!-- Porcelain Items -->
+                        <div class="item" data-product="porcelain" data-family="porcelain-plain">
+                            <h5>Porcelain Plain Item 1</h5>
+                        </div>
+                        <div class="item" data-product="porcelain" data-family="porcelain-plain">
+                            <h5>Porcelain Plain Item 2</h5>
+                        </div>
+                        <div class="item" data-product="porcelain" data-family="porcelain-decorated">
+                            <h5>Porcelain Decorated Item 1</h5>
+                        </div>
+                        <div class="item" data-product="porcelain" data-family="porcelain-decorated">
+                            <h5>Porcelain Decorated Item 2</h5>
+                        </div>
+                        <!-- Coating & decorations colours Items -->
+                        <div class="item" data-product="coating" data-family="glass-ceramic">
+                            <h5>Coating Glass Ceramic Item 1</h5>
+                        </div>
+                        <div class="item" data-product="coating" data-family="glass-ceramic">
+                            <h5>Coating Glass Ceramic Item 2</h5>
+                        </div>
+                        <div class="item" data-product="coating" data-family="organic-colours">
+                            <h5>Coating Organic Colours Item 1</h5>
+                        </div>
+                        <div class="item" data-product="coating" data-family="organic-colours">
+                            <h5>Coating Organic Colours Item 2</h5>
+                        </div>
+                        <div class="item" data-product="coating" data-family="luster">
+                            <h5>Coating Luster Item 1</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
-
+    </section>
+    <!-- products  -->
 
 
     <footer>
@@ -151,6 +360,78 @@
     <script>
         //wow js library
         new WOW().init();
+
+        $(document).ready(function () {
+            // Hide all subcategories initially
+            $('.filter-card[data-parent-category]').hide();
+
+            // Function to handle reset functionality
+            $('.filter-reset').click(function () {
+                $('.filter-item input').prop('checked', false);
+                $('.filter-card[data-parent-category]').hide();
+                updateFilteredResults();
+            });
+
+            // Function to toggle visibility of filter items
+            $('.filter-title').click(function () {
+                const items = $(this).next('.filter-items');
+                items.toggle();
+            });
+
+            // Function to show/hide subcategories based on main category selection
+            $('.main-category').change(function () {
+                const category = $(this).data('category');
+                if ($(this).is(':checked')) {
+                    $(`.filter-card[data-parent-category="${category}"]`).show();
+                } else {
+                    $(`.filter-card[data-parent-category="${category}"]`).hide();
+                }
+                updateFilteredResults();
+            });
+
+            // Function to handle nested subcategory visibility
+            $('.filter-item input').change(function () {
+                const category = $(this).data('category');
+                if ($(this).is(':checked')) {
+                    $(`.filter-card[data-parent-category="${category}"]`).show();
+                } else {
+                    $(`.filter-card[data-parent-category="${category}"]`).hide();
+                }
+                updateFilteredResults();
+            });
+
+            // Function to handle filtering logic
+            function updateFilteredResults() {
+                const filters = {
+                    product: [],
+                    family: []
+                };
+
+                $('.filter-item input:checked').each(function () {
+                    const parentCategory = $(this).closest('.filter-card').data('parent-category');
+                    const category = $(this).data('category');
+                    if (parentCategory) {
+                        filters.family.push(category);
+                    } else {
+                        filters.product.push(category);
+                    }
+                });
+
+                $('.item').each(function () {
+                    const productMatch = filters.product.length === 0 || filters.product.includes($(this).data('product'));
+                    const familyMatch = filters.family.length === 0 || filters.family.includes($(this).data('family'));
+
+                    if (productMatch && familyMatch) {
+                        $(this).fadeIn();
+                    } else {
+                        $(this).fadeOut();
+                    }
+                });
+            }
+
+            // Initialize with all items visible
+            updateFilteredResults();
+        });
     </script>
 
 </body>

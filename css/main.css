@@ -612,3 +612,41 @@ body.modal-open {
   height: 300px;
   object-fit: cover;
 }
+
+/* -------------------------------------------------------
+               products filter & cards
+-------------------------------------------------------- */
+
+.products .filter-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+.products .filter-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.products .filter-reset {
+  color: #ffa500;
+  cursor: pointer;
+}
+.products .filter-items {
+  display: none;
+  margin-top: 10px;
+}
+.products .filter-item {
+  margin-bottom: 5px;
+}
+.products .item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: none; /* Initial state hidden for animation purposes */
+}
+
+.products .filter-sidebar {
+  min-height: 100vh;
+}
