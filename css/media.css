@@ -66,4 +66,8 @@
     top: -115%;
     left: -23%;
   }
+
+  .products .filter-sidebar {
+    min-height: auto !important;
+  }
 }
