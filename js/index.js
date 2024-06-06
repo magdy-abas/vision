@@ -205,6 +205,8 @@ window.onclick = function (event) {
   }
 };
 
+//////////////////////// products filter ////////////////////////////
+
 $(document).ready(function () {
   // Cache frequently used elements
   const $filterItems = $(".filter-item input");
@@ -225,7 +227,8 @@ $(document).ready(function () {
     // Check the corresponding checkbox
     const checkbox = $(`#${category}`);
     if (checkbox.length) {
-      checkbox.prop("checked", true).trigger("change");
+      checkbox.prop("checked", true);
+      checkAndShowParentCategories(checkbox);
     }
   }
 
@@ -260,26 +263,38 @@ $(document).ready(function () {
     });
   }
 
-  // Event delegation for category changes
+  // Event delegation for category changes with debounce
+  const debounce = (func, wait) => {
+    let timeout;
+    return function (...args) {
+      const context = this;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+  };
+
+  const handleCategoryChange = debounce(function () {
+    const category = $(this).data("category");
+    if ($(this).is(":checked")) {
+      toggleSubcategories(category, true);
+      checkAndShowParentCategories($(this));
+    } else {
+      toggleSubcategories(category, false);
+    }
+    updateFilteredResults();
+  }, 200);
+
   $(".filter-card").on(
     "change",
     ".main-category, .filter-item input",
-    function () {
-      const category = $(this).data("category");
-      if ($(this).is(":checked")) {
-        toggleSubcategories(category, true);
-      } else {
-        toggleSubcategories(category, false);
-      }
-      updateFilteredResults();
-    }
+    handleCategoryChange
   );
 
   // Function to handle filtering logic
   function updateFilteredResults() {
     const filters = {
-      product: [],
-      family: [],
+      product: new Set(),
+      family: new Set(),
     };
 
     $filterItems.filter(":checked").each(function () {
@@ -288,19 +303,18 @@ $(document).ready(function () {
         .data("parent-category");
       const category = $(this).attr("id");
       if (parentCategory) {
-        filters.family.push(category);
+        filters.family.add(category);
       } else {
-        filters.product.push(category);
+        filters.product.add(category);
       }
     });
 
     $items.each(function () {
       const productMatch =
-        filters.product.length === 0 ||
-        filters.product.includes($(this).data("product"));
+        filters.product.size === 0 ||
+        filters.product.has($(this).data("product"));
       const familyMatch =
-        filters.family.length === 0 ||
-        filters.family.includes($(this).data("family"));
+        filters.family.size === 0 || filters.family.has($(this).data("family"));
 
       if (productMatch && familyMatch) {
         $(this).fadeIn();
@@ -310,16 +324,21 @@ $(document).ready(function () {
     });
   }
 
-  // Function to handle initial display of children checkboxes based on query parameter
-  function showInitialChildren(category) {
-    const parentCategory = $(`#${category}`).data("category");
+  // Function to check parent categories and show them
+  function checkAndShowParentCategories($checkbox) {
+    const parentCategory = $checkbox
+      .closest(".filter-card")
+      .data("parent-category");
     if (parentCategory) {
-      const parentCheckbox = $(`#${parentCategory}`);
-      if (parentCheckbox.length) {
-        parentCheckbox.prop("checked", true).trigger("change");
-        showInitialChildren(parentCategory);
+      const $parentCheckbox = $(`#${parentCategory}`);
+      if ($parentCheckbox.length && !$parentCheckbox.is(":checked")) {
+        $parentCheckbox.prop("checked", true);
+        toggleSubcategories(parentCategory, true);
+        checkAndShowParentCategories($parentCheckbox);
       }
     }
+    // Ensure the child checkbox is shown
+    $checkbox.closest(".filter-card").show();
   }
 
   // Initialize with all items visible
@@ -327,6 +346,9 @@ $(document).ready(function () {
 
   // Show children checkboxes based on the initial category query parameter
   if (category) {
-    showInitialChildren(category);
+    const checkbox = $(`#${category}`);
+    if (checkbox.length) {
+      checkAndShowParentCategories(checkbox);
+    }
   }
 });
