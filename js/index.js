@@ -204,3 +204,129 @@ window.onclick = function (event) {
     document.body.classList.remove("modal-open"); // Enable body scroll
   }
 };
+
+$(document).ready(function () {
+  // Cache frequently used elements
+  const $filterItems = $(".filter-item input");
+  const $filterCards = $(".filter-card[data-parent-category]");
+  const $items = $(".item");
+  const $filterReset = $(".filter-reset");
+
+  // Function to get query parameters
+  function getQueryParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+
+  // Get the category from the query parameter
+  const category = getQueryParameter("category");
+
+  if (category) {
+    // Check the corresponding checkbox
+    const checkbox = $(`#${category}`);
+    if (checkbox.length) {
+      checkbox.prop("checked", true).trigger("change");
+    }
+  }
+
+  // Hide all subcategories initially
+  $filterCards.hide();
+
+  // Function to handle reset functionality
+  $filterReset.click(function () {
+    $filterItems.prop("checked", false);
+    $filterCards.hide();
+    updateFilteredResults();
+  });
+
+  // Function to toggle visibility of filter items
+  $(".filter-title").click(function () {
+    $(this).next(".filter-items").toggle();
+  });
+
+  // Function to show/hide subcategories based on main category selection
+  function toggleSubcategories(category, show) {
+    const $children = $(`.filter-card[data-parent-category="${category}"]`);
+    $children.each(function () {
+      const $childCheckbox = $(this).find('input[type="checkbox"]');
+      if (show) {
+        $(this).show();
+      } else {
+        $childCheckbox.prop("checked", false);
+        $(this).hide();
+        // Recursively hide grandchildren
+        toggleSubcategories($childCheckbox.data("category"), false);
+      }
+    });
+  }
+
+  // Event delegation for category changes
+  $(".filter-card").on(
+    "change",
+    ".main-category, .filter-item input",
+    function () {
+      const category = $(this).data("category");
+      if ($(this).is(":checked")) {
+        toggleSubcategories(category, true);
+      } else {
+        toggleSubcategories(category, false);
+      }
+      updateFilteredResults();
+    }
+  );
+
+  // Function to handle filtering logic
+  function updateFilteredResults() {
+    const filters = {
+      product: [],
+      family: [],
+    };
+
+    $filterItems.filter(":checked").each(function () {
+      const parentCategory = $(this)
+        .closest(".filter-card")
+        .data("parent-category");
+      const category = $(this).attr("id");
+      if (parentCategory) {
+        filters.family.push(category);
+      } else {
+        filters.product.push(category);
+      }
+    });
+
+    $items.each(function () {
+      const productMatch =
+        filters.product.length === 0 ||
+        filters.product.includes($(this).data("product"));
+      const familyMatch =
+        filters.family.length === 0 ||
+        filters.family.includes($(this).data("family"));
+
+      if (productMatch && familyMatch) {
+        $(this).fadeIn();
+      } else {
+        $(this).fadeOut();
+      }
+    });
+  }
+
+  // Function to handle initial display of children checkboxes based on query parameter
+  function showInitialChildren(category) {
+    const parentCategory = $(`#${category}`).data("category");
+    if (parentCategory) {
+      const parentCheckbox = $(`#${parentCategory}`);
+      if (parentCheckbox.length) {
+        parentCheckbox.prop("checked", true).trigger("change");
+        showInitialChildren(parentCategory);
+      }
+    }
+  }
+
+  // Initialize with all items visible
+  updateFilteredResults();
+
+  // Show children checkboxes based on the initial category query parameter
+  if (category) {
+    showInitialChildren(category);
+  }
+});
