@@ -207,7 +207,7 @@ window.onclick = function (event) {
 
 //////////////////////// products filter ////////////////////////////
 
-$(document).ready(function () {
+/* $(document).ready(function () {
   // Cache frequently used elements
   const $filterItems = $(".filter-item input");
   const $filterCards = $(".filter-card[data-parent-category]");
@@ -228,6 +228,7 @@ $(document).ready(function () {
     const checkbox = $(`#${category}`);
     if (checkbox.length) {
       checkbox.prop("checked", true);
+      showChildCategories(checkbox.data("category"));
       checkAndShowParentCategories(checkbox);
     }
   }
@@ -341,6 +342,26 @@ $(document).ready(function () {
     $checkbox.closest(".filter-card").show();
   }
 
+  // Ensure all parent categories are shown when a child is selected
+  function ensureParentCategoriesVisible($checkbox) {
+    const parentCategory = $checkbox
+      .closest(".filter-card")
+      .data("parent-category");
+    if (parentCategory) {
+      $checkbox.closest(".filter-card").show();
+      const $parentCheckbox = $(`#${parentCategory}`);
+      if ($parentCheckbox.length) {
+        $parentCheckbox.prop("checked", true);
+        ensureParentCategoriesVisible($parentCheckbox);
+      }
+    }
+  }
+
+  // Show child categories for the main category
+  function showChildCategories(category) {
+    toggleSubcategories(category, true);
+  }
+
   // Initialize with all items visible
   updateFilteredResults();
 
@@ -348,7 +369,177 @@ $(document).ready(function () {
   if (category) {
     const checkbox = $(`#${category}`);
     if (checkbox.length) {
+      ensureParentCategoriesVisible(checkbox);
+      showChildCategories(category);
+    }
+  }
+});
+ */
+
+$(document).ready(function () {
+  // Cache frequently used elements
+  const $filterItems = $(".filter-item input");
+  const $filterCards = $(".filter-card[data-parent-category]");
+  const $items = $(".item");
+  const $filterReset = $(".filter-reset");
+
+  // Function to get query parameters
+  function getQueryParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+
+  // Get the category from the query parameter
+  const category = getQueryParameter("category");
+
+  if (category) {
+    // Check the corresponding checkbox
+    const checkbox = $(`#${category}`);
+    if (checkbox.length) {
+      checkbox.prop("checked", true);
+      showChildCategories(checkbox.data("category"));
       checkAndShowParentCategories(checkbox);
+    }
+  }
+
+  // Hide all subcategories initially
+  $filterCards.hide();
+
+  // Function to handle reset functionality
+  $filterReset.click(function () {
+    $filterItems.prop("checked", false);
+    $filterCards.hide();
+    updateFilteredResults();
+  });
+
+  // Function to show/hide subcategories based on main category selection
+  function toggleSubcategories(category, show) {
+    const $children = $(`.filter-card[data-parent-category="${category}"]`);
+    $children.each(function () {
+      const $childCheckbox = $(this).find('input[type="checkbox"]');
+      if (show) {
+        $(this).show();
+        $(this).find("label").removeClass("d-none"); // Ensure label is shown
+        $(this).find(".filter-items").show(); // Show the filter items container
+      } else {
+        $childCheckbox.prop("checked", false);
+        $(this).hide();
+        $(this).find("label").addClass("d-none"); // Ensure label is hidden
+        $(this).find(".filter-items").hide(); // Hide the filter items container
+        // Recursively hide grandchildren
+        toggleSubcategories($childCheckbox.data("category"), false);
+      }
+    });
+  }
+
+  // Event delegation for category changes with debounce
+  const debounce = (func, wait) => {
+    let timeout;
+    return function (...args) {
+      const context = this;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+  };
+
+  const handleCategoryChange = debounce(function () {
+    const category = $(this).data("category");
+    if ($(this).is(":checked")) {
+      toggleSubcategories(category, true);
+      checkAndShowParentCategories($(this));
+    } else {
+      toggleSubcategories(category, false);
+    }
+    updateFilteredResults();
+  }, 200);
+
+  $(".filter-card").on(
+    "change",
+    ".main-category, .filter-item input",
+    handleCategoryChange
+  );
+
+  // Function to handle filtering logic
+  function updateFilteredResults() {
+    const filters = {
+      product: new Set(),
+      family: new Set(),
+    };
+
+    $filterItems.filter(":checked").each(function () {
+      const parentCategory = $(this)
+        .closest(".filter-card")
+        .data("parent-category");
+      const category = $(this).attr("id");
+      if (parentCategory) {
+        filters.family.add(category);
+      } else {
+        filters.product.add(category);
+      }
+    });
+
+    $items.each(function () {
+      const productMatch =
+        filters.product.size === 0 ||
+        filters.product.has($(this).data("product"));
+      const familyMatch =
+        filters.family.size === 0 || filters.family.has($(this).data("family"));
+
+      if (productMatch && familyMatch) {
+        $(this).fadeIn();
+      } else {
+        $(this).fadeOut();
+      }
+    });
+  }
+
+  // Function to check parent categories and show them
+  function checkAndShowParentCategories($checkbox) {
+    const parentCategory = $checkbox
+      .closest(".filter-card")
+      .data("parent-category");
+    if (parentCategory) {
+      const $parentCheckbox = $(`#${parentCategory}`);
+      if ($parentCheckbox.length && !$parentCheckbox.is(":checked")) {
+        $parentCheckbox.prop("checked", true);
+        toggleSubcategories(parentCategory, true);
+        checkAndShowParentCategories($parentCheckbox);
+      }
+    }
+    // Ensure the child checkbox is shown
+    $checkbox.closest(".filter-card").show();
+    $checkbox.closest(".filter-card").find(".filter-items").show(); // Show the filter items container
+  }
+
+  // Ensure all parent categories are shown when a child is selected
+  function ensureParentCategoriesVisible($checkbox) {
+    const parentCategory = $checkbox
+      .closest(".filter-card")
+      .data("parent-category");
+    if (parentCategory) {
+      $checkbox.closest(".filter-card").show();
+      const $parentCheckbox = $(`#${parentCategory}`);
+      if ($parentCheckbox.length) {
+        $parentCheckbox.prop("checked", true);
+        ensureParentCategoriesVisible($parentCheckbox);
+      }
+    }
+  }
+
+  // Show child categories for the main category
+  function showChildCategories(category) {
+    toggleSubcategories(category, true);
+  }
+
+  // Initialize with all items visible
+  updateFilteredResults();
+
+  // Show children checkboxes based on the initial category query parameter
+  if (category) {
+    const checkbox = $(`#${category}`);
+    if (checkbox.length) {
+      ensureParentCategoriesVisible(checkbox);
+      showChildCategories(category);
     }
   }
 });
