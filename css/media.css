@@ -71,3 +71,23 @@
     min-height: auto !important;
   }
 }
+
+/* products-details  */
+
+@media only screen and (max-width: 768px) {
+  .display-details .img-details {
+    text-align: center;
+  }
+
+  .display-details .btn-details {
+    top: 10% !important;
+    background-color: #172f3b !important;
+    color: #ffff;
+  }
+}
+
+@media only screen and (max-width: 465px) {
+  .display-details .img-details {
+    text-align: center;
+  }
+}

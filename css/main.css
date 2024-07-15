@@ -5,16 +5,17 @@
 TABLE OF CONTENTS
 
 	01 Global
+  0.1 Utilities
 	02 Navbar
-	03 Header
-	04 About
-	05 Services
-	06 Portfolio
-	07 Clients
-	08 Counter
-	09 Blog
-	10 Contact
-	11 Responsive
+	03 Home
+	04 Events
+	05 Footer
+	06 Contact us
+	07 About us
+	08 product
+	8.1 products filter & cards
+	10 product-details
+	
 		
 ---------------------------------------------------------------- */
 
@@ -154,7 +155,7 @@ h4 {
 }
 
 /* -------------------------------------------------------
-                        home
+                        Home
 -------------------------------------------------------- */
 .carousel-container {
   padding: 0; /* Remove padding */
@@ -404,7 +405,7 @@ h4 {
   width: 15%;
 }
 /* -------------------------------------------------------
-                     footer 
+                     Footer 
 -------------------------------------------------------- */
 footer {
   background-color: var(--main-color);
@@ -414,7 +415,7 @@ footer img {
 }
 
 /* -------------------------------------------------------
-                     contact us
+                     Contact us
 -------------------------------------------------------- */
 .hero-section.contact-us {
   background-image: url("../imgs/contactUs-bg.png"),
@@ -465,7 +466,7 @@ footer img {
 }
 
 /* -------------------------------------------------------
-                about us
+                About us
 -------------------------------------------------------- */
 
 .hero-section.about-us {
@@ -590,6 +591,7 @@ body.modal-open {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  text-decoration-line: none;
 }
 
 .cards .card::before {
@@ -613,6 +615,11 @@ body.modal-open {
   object-fit: cover;
 }
 
+.cards .card .p-card {
+  font-size: 20px;
+  color: #172f3b;
+  font-weight: 500;
+}
 /* -------------------------------------------------------
                products filter & cards
 -------------------------------------------------------- */
@@ -695,4 +702,58 @@ body.modal-open {
     rgba(14, 63, 126, 0.04) 0px 12px 12px -6px,
     rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
   border-radius: 20px;
+}
+
+/* -------------------------------------------------------
+               product-details
+-------------------------------------------------------- */
+.display-details {
+  background-color: #172f3b;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.display-details .alert {
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border-radius: 7px;
+  background: #2e6373;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.display-details h2 {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 30.468px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.display-details p {
+  background: linear-gradient(267deg, #79afc9 38.89%, #c6972d 122%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.display-details .btn-contact {
+  border-radius: 7px;
+  background: #2e6373;
+  color: #ffff;
+}
+
+.display-details .btn-details {
+  position: absolute;
+  top: 5%;
+  left: 1%;
+  background-color: #ffff;
 }

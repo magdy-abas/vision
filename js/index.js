@@ -5,7 +5,7 @@ $(document).ready(function () {
     nav: false, // Hide navigation indicators
     dots: true, // Show custom dots
     autoplay: true,
-    autoplayTimeout: 3000, // 3 seconds
+    autoplayTimeout: 2000, // 2 seconds
     autoplayHoverPause: true, // Pause autoplay when hovering over the slider
     animateOut: "fadeOut", // Fade out animation
     animateIn: "fadeIn", // Fade in animation
@@ -26,9 +26,7 @@ $(document).ready(function () {
       },
     },
   });
-});
 
-$(document).ready(function () {
   $(".slider-1").owlCarousel({
     loop: true,
     margin: 10,
@@ -48,9 +46,7 @@ $(document).ready(function () {
       },
     },
   });
-});
 
-$(document).ready(function () {
   $(".user-carousel").owlCarousel({
     loop: true,
     margin: 10,
@@ -80,6 +76,7 @@ function toggleDropdownAttribute() {
   }
 }
 toggleDropdownAttribute();
+
 window.addEventListener("resize", updateDataToggle);
 const elements = document.querySelectorAll(".dropdown-btn");
 function updateDataToggle() {
