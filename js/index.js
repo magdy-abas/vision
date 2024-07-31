@@ -1,3 +1,4 @@
+// Document ready
 $(document).ready(function () {
   $(".carousel-1").owlCarousel({
     items: 1,
@@ -64,214 +65,113 @@ $(document).ready(function () {
       },
     },
   });
-});
-
-//drop-down  add atr to open in hover only in lg screens
-function toggleDropdownAttribute() {
-  var dropdownButton = document.getElementById("dropdown");
-  if (window.innerWidth <= 992) {
-    dropdownButton.setAttribute("data-bs-toggle", "dropdown");
-  } else {
-    dropdownButton.removeAttribute("data-bs-toggle");
+  // Function to show the loading spinner
+  function showLoadingSpinner() {
+    $("#loading-spinner").fadeIn(2000);
   }
-}
-toggleDropdownAttribute();
 
-window.addEventListener("resize", updateDataToggle);
-const elements = document.querySelectorAll(".dropdown-btn");
-function updateDataToggle() {
-  const windowWidth = window.innerWidth;
+  // Function to hide the loading spinner
+  function hideLoadingSpinner() {
+    $("#loading-spinner").fadeOut(2000);
+  }
 
-  elements.forEach((element) => {
-    if (windowWidth <= 992) {
-      element.setAttribute("data-bs-toggle", "dropdown");
+  // Function to toggle dropdown attribute based on screen width
+  function toggleDropdownAttribute() {
+    if ($(window).width() <= 992) {
+      $("#dropdown, .dropdown-btn").attr("data-bs-toggle", "dropdown");
     } else {
-      element.removeAttribute("data-bs-toggle");
+      $("#dropdown, .dropdown-btn").removeAttr("data-bs-toggle");
+    }
+  }
+
+  // Function to toggle dropdown classes based on screen width
+  function toggleMenuClasses() {
+    const windowWidth = $(window).width();
+    $(".menu")
+      .toggleClass("dropend", windowWidth >= 992)
+      .toggleClass("dropdown", windowWidth < 992);
+  }
+
+  // Function to add background color on hover
+  function addHoverEffect(itemSelector, btnSelector) {
+    $(itemSelector).hover(
+      function () {
+        $(btnSelector).css("backgroundColor", "rgba(119, 119, 119, 0.2)");
+      },
+      function () {
+        $(btnSelector).css("backgroundColor", "#eee");
+      }
+    );
+  }
+
+  // Modal functionality
+  $(".thumbnail").click(function () {
+    $("#myModal").show();
+    $("#img01").attr("src", this.src);
+    $("body").addClass("modal-open");
+  });
+
+  $(".close").click(function () {
+    $("#myModal").hide();
+    $("body").removeClass("modal-open");
+  });
+
+  $(window).click(function (event) {
+    if (event.target.id === "myModal") {
+      $("#myModal").hide();
+      $("body").removeClass("modal-open");
     }
   });
-}
 
-updateDataToggle();
-
-window.addEventListener("resize", updateDataToggle);
-
-// to make dropdown open in left in lg screens only
-function toggleMenuClasses() {
-  var menuElements = document.querySelectorAll(".menu");
-
-  if (window.innerWidth < 992) {
-    menuElements.forEach(function (element) {
-      element.classList.remove("dropend");
-      element.classList.add("dropdown");
-    });
-  } else {
-    menuElements.forEach(function (element) {
-      element.classList.remove("dropdown");
-      element.classList.add("dropend");
-    });
-  }
-}
-
-window.addEventListener("resize", toggleMenuClasses);
-
-toggleMenuClasses();
-
-// to add bg color to dropdown when hover in left dropdown
-
-const itemHoverElements = document.querySelectorAll(".itemHoverOne");
-const dropdownBtn = document.querySelector(".btnHoverOne");
-itemHoverElements.forEach((itemHover) => {
-  itemHover.addEventListener("mouseover", () => {
-    dropdownBtn.style.backgroundColor = "rgb(119, 119, 119, 0.2)";
-  });
-
-  itemHover.addEventListener("mouseout", () => {
-    dropdownBtn.style.backgroundColor = "#eee";
-  });
-});
-
-const itemHoverTwo = document.querySelectorAll(".itemHoverTwo");
-const dropdownBtnTwo = document.querySelector(".btnHoverTwo");
-itemHoverTwo.forEach((itemHover) => {
-  itemHover.addEventListener("mouseover", () => {
-    dropdownBtnTwo.style.backgroundColor = "rgb(119, 119, 119, 0.2)";
-  });
-
-  itemHover.addEventListener("mouseout", () => {
-    dropdownBtnTwo.style.backgroundColor = "#eee";
-  });
-});
-
-const itemHoverThree = document.querySelectorAll(".itemHoverThree");
-const dropdownBtnThree = document.querySelector(".btnHoverThree");
-itemHoverThree.forEach((itemHover) => {
-  itemHover.addEventListener("mouseover", () => {
-    dropdownBtnThree.style.backgroundColor = "rgb(119, 119, 119, 0.2)";
-  });
-
-  itemHover.addEventListener("mouseout", () => {
-    dropdownBtnThree.style.backgroundColor = "#eee";
-  });
-});
-
-const itemHoverFour = document.querySelectorAll(".itemHoverFour");
-const dropdownBtnFour = document.querySelector(".btnHoverFour");
-itemHoverFour.forEach((itemHover) => {
-  itemHover.addEventListener("mouseover", () => {
-    dropdownBtnFour.style.backgroundColor = "rgb(119, 119, 119, 0.2)";
-  });
-
-  itemHover.addEventListener("mouseout", () => {
-    dropdownBtnFour.style.backgroundColor = "#eee";
-  });
-});
-
-// modal in contact us
-
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var images = document.getElementsByClassName("thumbnail");
-var modalImg = document.getElementById("img01");
-
-for (var i = 0; i < images.length; i++) {
-  images[i].onclick = function () {
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    document.body.classList.add("modal-open"); // Disable body scroll
-  };
-}
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-if (span) {
-  span.addEventListener("click", function () {
-    modal.style.display = "none";
-    document.body.classList.remove("modal-open"); // Enable body scroll
-  });
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-    document.body.classList.remove("modal-open"); // Enable body scroll
-  }
-};
-
-//////////////////////// products filter ////////////////////////////
-
-/* $(document).ready(function () {
-  // Cache frequently used elements
+  // Products filter
   const $filterItems = $(".filter-item input");
   const $filterCards = $(".filter-card[data-parent-category]");
   const $items = $(".item");
   const $filterReset = $(".filter-reset");
 
-  // Function to get query parameters
   function getQueryParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(name);
   }
 
-  // Get the category from the query parameter
   const category = getQueryParameter("category");
-
   if (category) {
-    // Check the corresponding checkbox
-    const checkbox = $(`#${category}`);
-    if (checkbox.length) {
-      checkbox.prop("checked", true);
-      showChildCategories(checkbox.data("category"));
-      checkAndShowParentCategories(checkbox);
+    const $checkbox = $(`#${category}`);
+    if ($checkbox.length) {
+      $checkbox.prop("checked", true);
+      showChildCategories($checkbox.data("category"));
+      checkAndShowParentCategories($checkbox);
     }
   }
 
-  // Hide all subcategories initially
   $filterCards.hide();
 
-  // Function to handle reset functionality
   $filterReset.click(function () {
+    showLoadingSpinner();
     $filterItems.prop("checked", false);
     $filterCards.hide();
     updateFilteredResults();
+    hideLoadingSpinner();
   });
 
-  // Function to toggle visibility of filter items
-  $(".filter-title").click(function () {
-    $(this).next(".filter-items").toggle();
-  });
-
-  // Function to show/hide subcategories based on main category selection
   function toggleSubcategories(category, show) {
     const $children = $(`.filter-card[data-parent-category="${category}"]`);
     $children.each(function () {
       const $childCheckbox = $(this).find('input[type="checkbox"]');
       if (show) {
-        $(this).show();
+        $(this).show().find("label").removeClass("d-none");
+        $(this).find(".filter-items").show();
       } else {
         $childCheckbox.prop("checked", false);
-        $(this).hide();
-        // Recursively hide grandchildren
+        $(this).hide().find("label").addClass("d-none");
+        $(this).find(".filter-items").hide();
         toggleSubcategories($childCheckbox.data("category"), false);
       }
     });
   }
 
-  // Event delegation for category changes with debounce
-  const debounce = (func, wait) => {
-    let timeout;
-    return function (...args) {
-      const context = this;
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(context, args), wait);
-    };
-  };
-
   const handleCategoryChange = debounce(function () {
+    showLoadingSpinner();
     const category = $(this).data("category");
     if ($(this).is(":checked")) {
       toggleSubcategories(category, true);
@@ -280,6 +180,7 @@ window.onclick = function (event) {
       toggleSubcategories(category, false);
     }
     updateFilteredResults();
+    hideLoadingSpinner();
   }, 200);
 
   $(".filter-card").on(
@@ -288,13 +189,8 @@ window.onclick = function (event) {
     handleCategoryChange
   );
 
-  // Function to handle filtering logic
   function updateFilteredResults() {
-    const filters = {
-      product: new Set(),
-      family: new Set(),
-    };
-
+    const filters = { product: new Set(), family: new Set() };
     $filterItems.filter(":checked").each(function () {
       const parentCategory = $(this)
         .closest(".filter-card")
@@ -309,20 +205,13 @@ window.onclick = function (event) {
 
     $items.each(function () {
       const productMatch =
-        filters.product.size === 0 ||
-        filters.product.has($(this).data("product"));
+        !filters.product.size || filters.product.has($(this).data("product"));
       const familyMatch =
-        filters.family.size === 0 || filters.family.has($(this).data("family"));
-
-      if (productMatch && familyMatch) {
-        $(this).fadeIn();
-      } else {
-        $(this).fadeOut();
-      }
+        !filters.family.size || filters.family.has($(this).data("family"));
+      $(this).toggle(productMatch && familyMatch);
     });
   }
 
-  // Function to check parent categories and show them
   function checkAndShowParentCategories($checkbox) {
     const parentCategory = $checkbox
       .closest(".filter-card")
@@ -335,11 +224,9 @@ window.onclick = function (event) {
         checkAndShowParentCategories($parentCheckbox);
       }
     }
-    // Ensure the child checkbox is shown
-    $checkbox.closest(".filter-card").show();
+    $checkbox.closest(".filter-card").show().find(".filter-items").show();
   }
 
-  // Ensure all parent categories are shown when a child is selected
   function ensureParentCategoriesVisible($checkbox) {
     const parentCategory = $checkbox
       .closest(".filter-card")
@@ -354,189 +241,43 @@ window.onclick = function (event) {
     }
   }
 
-  // Show child categories for the main category
   function showChildCategories(category) {
     toggleSubcategories(category, true);
   }
 
-  // Initialize with all items visible
   updateFilteredResults();
-
-  // Show children checkboxes based on the initial category query parameter
   if (category) {
-    const checkbox = $(`#${category}`);
-    if (checkbox.length) {
-      ensureParentCategoriesVisible(checkbox);
+    const $checkbox = $(`#${category}`);
+    if ($checkbox.length) {
+      ensureParentCategoriesVisible($checkbox);
       showChildCategories(category);
     }
   }
-});
- */
 
-$(document).ready(function () {
-  // Cache frequently used elements
-  const $filterItems = $(".filter-item input");
-  const $filterCards = $(".filter-card[data-parent-category]");
-  const $items = $(".item");
-  const $filterReset = $(".filter-reset");
+  // Initialize dropdown attribute and classes
+  toggleDropdownAttribute();
+  toggleMenuClasses();
 
-  // Function to get query parameters
-  function getQueryParameter(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-  }
-
-  // Get the category from the query parameter
-  const category = getQueryParameter("category");
-
-  if (category) {
-    // Check the corresponding checkbox
-    const checkbox = $(`#${category}`);
-    if (checkbox.length) {
-      checkbox.prop("checked", true);
-      showChildCategories(checkbox.data("category"));
-      checkAndShowParentCategories(checkbox);
-    }
-  }
-
-  // Hide all subcategories initially
-  $filterCards.hide();
-
-  // Function to handle reset functionality
-  $filterReset.click(function () {
-    $filterItems.prop("checked", false);
-    $filterCards.hide();
-    updateFilteredResults();
+  $(window).resize(function () {
+    toggleDropdownAttribute();
+    toggleMenuClasses();
   });
 
-  // Function to show/hide subcategories based on main category selection
-  function toggleSubcategories(category, show) {
-    const $children = $(`.filter-card[data-parent-category="${category}"]`);
-    $children.each(function () {
-      const $childCheckbox = $(this).find('input[type="checkbox"]');
-      if (show) {
-        $(this).show();
-        $(this).find("label").removeClass("d-none"); // Ensure label is shown
-        $(this).find(".filter-items").show(); // Show the filter items container
-      } else {
-        $childCheckbox.prop("checked", false);
-        $(this).hide();
-        $(this).find("label").addClass("d-none"); // Ensure label is hidden
-        $(this).find(".filter-items").hide(); // Hide the filter items container
-        // Recursively hide grandchildren
-        toggleSubcategories($childCheckbox.data("category"), false);
-      }
-    });
-  }
+  // Add hover effects
+  addHoverEffect(".itemHoverOne", ".btnHoverOne");
+  addHoverEffect(".itemHoverTwo", ".btnHoverTwo");
+  addHoverEffect(".itemHoverThree", ".btnHoverThree");
+  addHoverEffect(".itemHoverFour", ".btnHoverFour");
 
-  // Event delegation for category changes with debounce
-  const debounce = (func, wait) => {
-    let timeout;
-    return function (...args) {
-      const context = this;
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(context, args), wait);
-    };
-  };
-
-  const handleCategoryChange = debounce(function () {
-    const category = $(this).data("category");
-    if ($(this).is(":checked")) {
-      toggleSubcategories(category, true);
-      checkAndShowParentCategories($(this));
-    } else {
-      toggleSubcategories(category, false);
-    }
-    updateFilteredResults();
-  }, 200);
-
-  $(".filter-card").on(
-    "change",
-    ".main-category, .filter-item input",
-    handleCategoryChange
-  );
-
-  // Function to handle filtering logic
-  function updateFilteredResults() {
-    const filters = {
-      product: new Set(),
-      family: new Set(),
-    };
-
-    $filterItems.filter(":checked").each(function () {
-      const parentCategory = $(this)
-        .closest(".filter-card")
-        .data("parent-category");
-      const category = $(this).attr("id");
-      if (parentCategory) {
-        filters.family.add(category);
-      } else {
-        filters.product.add(category);
-      }
-    });
-
-    $items.each(function () {
-      const productMatch =
-        filters.product.size === 0 ||
-        filters.product.has($(this).data("product"));
-      const familyMatch =
-        filters.family.size === 0 || filters.family.has($(this).data("family"));
-
-      if (productMatch && familyMatch) {
-        $(this).fadeIn();
-      } else {
-        $(this).fadeOut();
-      }
-    });
-  }
-
-  // Function to check parent categories and show them
-  function checkAndShowParentCategories($checkbox) {
-    const parentCategory = $checkbox
-      .closest(".filter-card")
-      .data("parent-category");
-    if (parentCategory) {
-      const $parentCheckbox = $(`#${parentCategory}`);
-      if ($parentCheckbox.length && !$parentCheckbox.is(":checked")) {
-        $parentCheckbox.prop("checked", true);
-        toggleSubcategories(parentCategory, true);
-        checkAndShowParentCategories($parentCheckbox);
-      }
-    }
-    // Ensure the child checkbox is shown
-    $checkbox.closest(".filter-card").show();
-    $checkbox.closest(".filter-card").find(".filter-items").show(); // Show the filter items container
-  }
-
-  // Ensure all parent categories are shown when a child is selected
-  function ensureParentCategoriesVisible($checkbox) {
-    const parentCategory = $checkbox
-      .closest(".filter-card")
-      .data("parent-category");
-    if (parentCategory) {
-      $checkbox.closest(".filter-card").show();
-      const $parentCheckbox = $(`#${parentCategory}`);
-      if ($parentCheckbox.length) {
-        $parentCheckbox.prop("checked", true);
-        ensureParentCategoriesVisible($parentCheckbox);
-      }
-    }
-  }
-
-  // Show child categories for the main category
-  function showChildCategories(category) {
-    toggleSubcategories(category, true);
-  }
-
-  // Initialize with all items visible
-  updateFilteredResults();
-
-  // Show children checkboxes based on the initial category query parameter
-  if (category) {
-    const checkbox = $(`#${category}`);
-    if (checkbox.length) {
-      ensureParentCategoriesVisible(checkbox);
-      showChildCategories(category);
-    }
-  }
+  // Show loading spinner on nav link click
+  $("nav a").click(showLoadingSpinner);
 });
+
+// Debounce function
+function debounce(func, wait) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
