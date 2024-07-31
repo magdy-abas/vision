@@ -273,6 +273,25 @@ $(document).ready(function () {
   $("nav a").click(showLoadingSpinner);
 });
 
+//dbl click href to products
+
+// Add a dblclick event listener to elements with the class .dblClick
+$(document).ready(function () {
+  var lastTap = 0;
+  $(".dblClick").on("touchend", function (event) {
+    var currentTime = new Date().getTime();
+    var tapLength = currentTime - lastTap;
+
+    if (tapLength < 500 && tapLength > 0) {
+      // This is a double-tap
+      if ($(window).width() < 992) {
+        window.location.href = "products.html";
+      }
+    }
+    lastTap = currentTime;
+  });
+});
+
 // Debounce function
 function debounce(func, wait) {
   let timeout;
